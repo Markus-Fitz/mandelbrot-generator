@@ -1,15 +1,19 @@
-function generate(){
+function generate(res_x, res_y, start_x, end_x, start_y){
 
 	var canvas = document.getElementById("paper");
-	var c = canvas.getContext("2d");
+	canvas.width = res_x;
+	canvas.height = res_y;
+	var c = canvas.getContext("2d");	
 
-	//definition of starting- and end-points of area to be displayed
-	var x_start = -2;
-	var y_start = -1.75*(1200/1920);
-	var x_end = 1.5;
-	var y_end = 1.75*(1200/1920);
-	var res_x = 1921;
-	var res_y = 1201;
+	//specify Mandelbrot section here
+	var x_start = start_x;
+	var x_end = end_x;
+
+	//y-parameters are chosen to start at start_y and adhere to aspect ratio defined by resolution
+	var y_section = (x_end-x_start)*(res_y/res_x);
+	var y_start = start_y;
+	var y_end = start_y + y_section;
+
 	var dx = (x_end - x_start)/res_x;
 	var dy = (y_end - y_start)/res_y;
 
@@ -29,7 +33,7 @@ function generate(){
 	var j;
 	var k;
 
-	//flag which is true, if pixel is in set
+	//flag which is true, if pixel is in Mandelbrot set
 	var inset = true;
 	
 	for(a = 0; a < res_x + 1; a = a + 1){
@@ -39,7 +43,7 @@ function generate(){
 			e = 0;
 			f = 0;
 
-			//initialization of set flag
+			//initialization of inset flag
 			inset = true;
 			
 			for(i = 0; i < maxiter; i++){
@@ -61,10 +65,13 @@ function generate(){
 				
 			}
 
+			//rounded distance variable for classification below
 			k = Math.round(j);
 
+			//color pixel black if contained in Mandelbrot set
 			if(inset){c.fillStyle = 'black';}
 			
+			//color pixel shades of grey if not contained in Mandelbrot set, depending on speed of divergence
 			if(!inset){
 
 				if(i > 1){c.fillStyle = 'rgb(0,0,0)'}
