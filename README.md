@@ -18,3 +18,9 @@ $$
 
  and splitting it in half.
 To render the mandelbrot-set, load the html-file from the folder which contains both the html- and javascript-files and the Mandelbrot-set will render with the chosen parameters.
+
+## Result
+
+The steps above result in a rendered Mandelbrot set in a full-HD resolution. A screenshot of the default result (scaled by 1/2 in both directions for formatting reasonsn) is shown below.
+
+<img width="960" height="540" alt="Mandelbrot_set_960x540" src="https://github.com/user-attachments/assets/d2a89bbb-75e0-4c6b-aeea-ec8b17fb6d7c" />
