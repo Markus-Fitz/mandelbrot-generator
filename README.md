@@ -12,7 +12,9 @@ The section to be rendered can be specified fully in x-direction (x_start and x_
 
 Per default, the full mandelbrot set is rendered on a 1920x1080 canvas. The section in x-direction is set to -2.8 to 1.5. The start of the y-section is chosen such that the set is symmetric to the x-axis. This is done by calculating the section in y-direction which corresponds to the aspect ratio
 
+$$
 (1.5 - (-2.8)) * (1080 / 1920)
+$$
 
 and splitting it in half.
 
